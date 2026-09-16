@@ -1,24 +1,11 @@
 import ProjectList from "@/components/ProjectList";
-import { link } from "fs";
+import { getProjects } from "@/lib/projects-db";
 
-const projects = [
-  {
-    title: "E-commerce Dashboard",
-    description:
-      "A clean admin dashboard for tracking orders, products, and customer activity. It focuses on making business data easy to scan and simple to act on.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
-    link: "https://wdd430-portfolio-teal.vercel.app",
-  },
-  {
-    title: "Weather App",
-    description:
-      "A responsive weather application that helps users quickly check current conditions and upcoming forecasts with a simple, friendly interface.",
-    technologies: ["React", "TypeScript", "API Integration", "Tailwind CSS"],
-    link: "https://weather.com",
-  },
-];
+export const dynamic = "force-dynamic";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const projects = await getProjects();
+
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
       <div className="max-w-3xl">
